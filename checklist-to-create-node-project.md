@@ -19,3 +19,19 @@
 `npx eslint --init` to init eslint config
 
 `npm i fastify` to add a framework node
+
+`npm i dotenv` to add a dotenv config
+
+`npm i @fastify/cors @fastify/cookie @fastify/jwt` too manager the cors, cookies and jwt
+
+`npm i dayjs` to work with date and time (if necessary)
+
+`npm i bcryptjs` to work crypt data
+
+`npm i @types/bcryptjs -D` to add types
+
+`npm i prisma -D` to work with prisma em environment dev
+
+`npm i @prisma/client` to production
+
+`npm i supertest @types/supertest -D` to work with request on tests
