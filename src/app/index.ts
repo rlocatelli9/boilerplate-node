@@ -1,16 +1,26 @@
-
-import { env } from 'env'
+import { fastifyCookie } from '@fastify/cookie'
+import { fastifyCors } from '@fastify/cors'
+import { fastifyJwt } from '@fastify/jwt'
+import { fastifySwagger } from '@fastify/swagger'
+import ScalarApiReference from '@scalar/fastify-api-reference'
 import fastify from 'fastify'
-import appRoutes from 'src/http/routes'
+import {
+  jsonSchemaTransform,
+  serializerCompiler,
+  validatorCompiler,
+  type ZodTypeProvider,
+} from 'fastify-type-provider-zod'
 import { ZodError } from 'zod'
+import appRoutes from '@/http/routes'
+import { env } from '../../env'
+export const app = fastify().withTypeProvider<ZodTypeProvider>()
 
-import cors from '@fastify/cors'
-import fastifyJwt from '@fastify/jwt'
-import fastifyCookie from '@fastify/cookie'
-export const app = fastify()
+app.setValidatorCompiler(validatorCompiler)
+app.setSerializerCompiler(serializerCompiler)
 
-app.register(cors, {
-  origin: 'http://localhost:3000',
+app.register(fastifyCors, {
+  origin: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
 })
 
 app.register(fastifyJwt, {
@@ -25,6 +35,21 @@ app.register(fastifyJwt, {
 })
 
 app.register(fastifyCookie)
+
+app.register(fastifySwagger, {
+  openapi: {
+    info: {
+      title: 'boilerplate API',
+      description: 'boileerplate up to date for your API',
+      version: '2.0.0',
+    },
+  },
+  transform: jsonSchemaTransform,
+})
+
+app.register(ScalarApiReference, {
+  routePrefix: '/docs',
+})
 
 app.register(appRoutes)
 app.setErrorHandler((error, _, reply) => {

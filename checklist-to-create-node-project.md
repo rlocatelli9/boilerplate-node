@@ -1,37 +1,43 @@
-`npm init -y` to create package.json
+## Step by step if you want!
 
-`npm i typescript -D` to add typescript as dev dependency
+`pnpm init` to create package.json
 
-`npx tsc --init` to create tsconfig.json
+`pnpm i typescript @types/node -D` to add typescript as dev dependency
 
-`npm i tsx -D` to execute our typescript project without conversions
+`pnpm i tsx -D` to execute our typescript project without conversions
 
-`npm i tsup -D` to build our typescript to javascript language
+`npx tsc --init` to create tsconfig.json.
 
-`npm i @types/node -D` to add type definitions for node
+```code
+ check the on tsconfig/bases website and copy and paste the tsconfig base based on your node version.
+ ```
 
-`npm i vitest -D` to add support our tests with typescript without any extra configuration
+`pnpm add -D -E @biomejs/biome` to install the lint and format the code
 
-`npm i zod` to validate and transform data
+`pnpm exec biome init` to create biome.json
 
-`npm i eslint @rocketseat/eslint-config -D` to add formater code
+`pnpm i tsup -D` to build our typescript to javascript language
 
-`npx eslint --init` to init eslint config
+`pnpm i vitest -D` to add support our tests with typescript without any extra configuration
 
-`npm i fastify` to add a framework node
+`pnpm i zod fastify-type-provider-zod` to validate and transform and serialize data
 
-`npm i dotenv` to add a dotenv config
+`pnpm i fastify` to add a framework node
 
-`npm i @fastify/cors @fastify/cookie @fastify/jwt` too manager the cors, cookies and jwt
+`pnpm i dotenv` to add a dotenv config
 
-`npm i dayjs` to work with date and time (if necessary)
+`pnpm i @fastify/cors @fastify/cookie @fastify/jwt` to manager the cors, cookies and jwt
 
-`npm i bcryptjs` to work crypt data
+`pnpm i @fastify/swagger @scalar/fastify-api-reference` to manager api doc
 
-`npm i @types/bcryptjs -D` to add types
+`pnpm i dayjs` to work with date and time (if necessary)
 
-`npm i prisma -D` to work with prisma em environment dev
+`pnpm i bcryptjs` to work crypt data
 
-`npm i @prisma/client` to production
+`pnpm i @types/bcryptjs -D` to add types
 
-`npm i supertest @types/supertest -D` to work with request on tests
+`pnpm i prisma -D` to work with prisma em environment dev
+
+`pnpm i @prisma/client` to production
+
+`pnpm i supertest @types/supertest -D` to work with request on tests
